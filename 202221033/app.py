@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1h2a2hsAwwHc7h4qn-AgtZYjHkSYfQXfV
 """
 
+import sklearn
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
