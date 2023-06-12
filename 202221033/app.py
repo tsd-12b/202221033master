@@ -7,12 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/1h2a2hsAwwHc7h4qn-AgtZYjHkSYfQXfV
 """
 
-import streamlit as st
-import control
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy import signal
-
-
+import control
 
 #전달 함수 정의
 G = control.TransferFunction([100],[1,5,6])
@@ -34,15 +32,15 @@ system = signal.TransferFunction(num,den)
 t,y=signal.step(system)
 
 #그래프 그리기: 단위 계단 응답
-fig = plt.figure()
 plt.figure()
 plt.plot(t,y)
 plt.xlabel('Time(s)')
 plt.ylabel('Response')
 plt.title('Step Response of H(s) =100/ (s + 2)* (s + 3)')
-plt.grid(True)
+plt.grid()
+
+#그래프 표시
 plt.show()
-st.pyplot(fig)
 
 G0 = signal.lti([100],[1])
 G1 = signal.lti([1],[1,2])
@@ -58,7 +56,6 @@ colors = ['r', 'g', 'b', 'm']
 plt.figure(figsize=(12,8))
 
 # Bode magnitude plot
-fig1 = plt.figure()
 plt.subplot(2,1,1)
 for sys,label,color in zip(systems, labels, colors):
   w, mag,_=sys.bode(frequencies)
@@ -66,9 +63,8 @@ for sys,label,color in zip(systems, labels, colors):
 plt.title('Bode plot')
 plt.ylabel('Magnitude [dB]')
 plt.legend()
-st.pyplot(fig1)
 
-fig2 = plt.figure()
+
 plt.subplot(2,1,2)
 for sys,_,color in zip(systems, labels, colors):
   w,_,phase = sys.bode(frequencies)
@@ -76,4 +72,3 @@ for sys,_,color in zip(systems, labels, colors):
 plt.ylabel('Phase [degrees]')
 plt.xlabel('Frequency [Hz]')
 plt.show()
-st.pyplot(fig2)
