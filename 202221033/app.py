@@ -13,15 +13,15 @@ import matplotlib.pyplot as plt
 from scipy import signal
 import control
 
-st.title('Graphs')
-
+st.title('제어공학 2번 문제')
+st.header("이재한")
+st.subheader("202221033")
 #전달 함수 정의
 G = control.TransferFunction([100],[1,5,6])
 
 # 폐루프 전달함수 계산
 G1 = control.feedback(G)
 
-st.subheader("Transfer Function G(s):")
 st.write(G1)
 
 #단위 계산 응답
